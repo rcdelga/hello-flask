@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+		<title>TODOs</title>
+	</head>
+<body>
+	<h1>TODOs</h1>
+	<form method="POST" />
+		<label>
+			New Task:
+		<input type="text" name="task" />
+		</label>
+		<input type="submit" value="Add task" />
+	</form>
+
+	<hr />
+
+	{% if tasks|length == 0 %}
+	<p>No tasks yet</p>
+	{% endif %}
+
+</body>
+</html>
