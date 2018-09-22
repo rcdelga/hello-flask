@@ -1,31 +1,25 @@
 from flask import Flask, request, redirect
 import cgi
+import os
+import jinja2
+
+template_dir = os.path.join(os.path.dirname(__file__),'templates')
+jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape = True)
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
-form = """
-<!doctype html>
-<html>
-    <body>
-        <form action="/hello" method="POST">
-        <label for="first_name">First Name:</label>
-        <input id="first_name" type="text" name="first_name" />
-        <input type="submit" />
-        </form>
-    </body>
-</html>
-"""
-
 @app.route("/")
 def index():
-    return form
+    template = jinja_env.get_template('hello_form.html')
+    return template.render()
 
 @app.route("/hello", methods=['POST']) #added methods=['POST'] for a POST request.
 def hello():
     first_name = request.form['first_name'] #POST request
 #    first_name = request.args.get('first_name') #GET request
-    return '<h1>Hello, ' + cgi.escape(first_name) + '</h1>'
+    template = jinja_env.get_template('hello_greeting.html')
+    return template.render(name = first_name)
 
 
 time_form = """
