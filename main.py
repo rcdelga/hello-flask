@@ -85,6 +85,11 @@ def todos():
         tasks.append(task)
 
     template = jinja_env.get_template('todos.html')
-    return template.render(tasks=tasks)
+    return template.render(title="TODOs",tasks=tasks)
+
+@app.route('/forms')
+def forms():
+    template = jinja_env.get_template('forms.html')
+    return template.render()
 
 app.run()

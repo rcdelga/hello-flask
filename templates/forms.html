@@ -1,9 +1,6 @@
-<!doctype html>
-<html>
-    <head>
+{% extends "base.html" %}
 
-    </head>
-    <body>
+{% block content %}
         <form action="https://duckduckgo.com" method="GET">
             <label for="search-term">Search term:</label>
             <input id="search-term" type="text" name="q"/>
@@ -15,8 +12,4 @@
             <li><a href="https://duckduckgo.com/?q=python" target="_BLANK">Python</a></li>
             <li><a href="https://duckduckgo.com/?q=html+hints" target="_BLANK">HTML Help</a></li>
         </ul>
-    </body>
-    <footer>
-
-    </footer>
-</html>
+{% endblock %}

@@ -1,29 +1,24 @@
-<!DOCTYPE html>
-<html>
- 	<head>
-		<title>TODOs</title>
-	</head>
-<body>
-	<h1>TODOs</h1>
-	<form method="POST" />
-		<label>
-			New Task:
-		<input type="text" name="task" />
-		</label>
-		<input type="submit" value="Add task" />
-	</form>
+{% extends "base.html" %}
 
-	<hr />
+{% block content %}
+<h1>TODOs</h1>
+<form method="POST" />
+	<label>
+		New Task:
+	<input type="text" name="task" />
+	</label>
+	<input type="submit" value="Add task" />
+</form>
 
-	{% if tasks|length == 0 %}
-	<p>No tasks yet</p>
-	{% else %}
-		<ul>
-			{% for task in tasks %}
-			<li>{{task}}</li>
-			{% endfor %}
-		</ul>
-	{% endif %}
+<hr />
 
-</body>
-</html>
+{% if tasks|length == 0 %}
+<p>No tasks yet</p>
+{% else %}
+	<ul>
+		{% for task in tasks %}
+		<li>{{task}}</li>
+		{% endfor %}
+	</ul>
+{% endif %}
+{% endblock %}
